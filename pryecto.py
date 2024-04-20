@@ -1,13 +1,20 @@
 funciones = {}
 
-def agregar_medicamento(nobre,horario):
-    funciones[nombre] = horario
+import time
+
+def agregar_medicamento(nombre,horas,minutos):
+    funciones[nombre] = horas
     print("medicamento agregado correcta mente")
+    tiempo = horas *60 *60 + minutos*60
+    print(f"la alarma sonara en {horas} horas y {minutos} minutos ")
+    time.sleep(tiempo)
+    print("hora de los medicamentos")
+    
 
 def listado_medicamentos():
     print("\n** listado de medicamentos **")
-    for nombre, horario in funciones.items():
-        print(f"nombre: {nombre}, cada {horario} horas")
+    #for nombre, horas in funciones.items():
+    print(f"{nombre}, cada {horas} horas y {minutos} minutos")
 
 
 
@@ -19,8 +26,9 @@ while True :
     op = input("que opcion elije ")
     if op == "1":
         nombre = input("ingrese el medicamento ")
-        horario = input("ingrese cada cuantas hora debe tomar el medicamento ")
-        agregar_medicamento(nombre,horario)
+        horas = int(input("ingrese cada cuantas horas debe tomar los medicamentos "))
+        minutos = int(input("ingrese los minutos "))
+        agregar_medicamento(nombre,horas,minutos)
     
     elif op == "2":
         listado_medicamentos()
