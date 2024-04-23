@@ -11,7 +11,8 @@ def agregar_medicamento(nombre,horas,minutos):
         while True:
             tiempo = horas * 3600 + minutos
             time.sleep(tiempo)
-            print(f"Hora de tomar el medicamento: {nombre}")
+            if funciones [nombre]["alarma_activa"]:
+                print(f"Hora de tomar el medicamento: {nombre}")
 
     # Crear y comenzar un nuevo hilo para la alarma
     hilo_alarma = threading.Thread(target=ejecutar_alarma, args=(nombre, horas, minutos))
