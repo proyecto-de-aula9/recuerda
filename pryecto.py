@@ -13,7 +13,7 @@ def agregar_medicamento(nombre,horas,dosis,dias):
             dosis = dosis * dias
         for i in range (dosis):
             contado = i + 1
-            tiempo = horas
+            tiempo = horas * 3600
             time.sleep(tiempo)
             if funciones [nombre]["alarma_activa"]:
                 print(f"Hora de tomar el medicamento {nombre}")
