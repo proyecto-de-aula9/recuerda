@@ -4,6 +4,18 @@ import time
 funciones = {}
 historial = []
 
+def inicio():
+    while True:
+        print("ingrese su usuario")
+        usuario = input("")
+        print("ingrese su contraseña")
+        contraseña  = input("")
+        if usuario == "admin" and contraseña == "admin":
+            print("inicio de seccion exitoso")
+            return
+        else :
+            print("usuario o contraseña incorrecta")
+
 def agregar_medicamento(nombre,horas,dosis,dias):
     funciones[nombre] = {"horas":horas,dosis:dosis,"dias":dias,"alarma_activa": True}
     print("medicamento agregado correcta mente")
@@ -50,7 +62,7 @@ def mostrar_historial():
     for Historial in historial :
         print(f"{Historial['nombre']}: tomado a las {Historial['horas']}")
     
-
+inicio()
 while True :
     print("opcion 1: agregar medicamento")
     print("opcion 2: mostrar listado de medicamentos")
@@ -60,10 +72,15 @@ while True :
     op = input("que opcion elije ")
     if op == "1":
         nombre = input("ingrese el medicamento ")
-        horas = int(input("ingrese cada cuantas horas debe tomar los medicamentos "))
-        dosis = int(input("ingrese su dosis diaria "))
-        dias = int(input("ingrese los dias que debe tomar los medicamentos "))
-        agregar_medicamento(nombre,horas,dosis,dias)
+        while True :
+            try:
+                horas = int(input("ingrese cada cuantas horas debe tomar los medicamentos "))
+                dosis = int(input("ingrese su dosis diaria "))
+                dias = int(input("ingrese los dias que debe tomar los medicamentos "))
+                agregar_medicamento(nombre,horas,dosis,dias)
+                break
+            except ValueError:
+                print("ingrese solo numeros enteros")
     
     elif op == "2":
         listado_medicamentos()
