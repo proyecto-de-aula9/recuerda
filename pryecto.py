@@ -31,7 +31,7 @@ def agregar_medicamento(nombre,horas,dosis,dias):
                 print(f"Hora de tomar el medicamento {nombre}")
                 registrar_historial(nombre)
             if contado == dosis:
-                print(f"hoy es el ultimo dia del medicamento {nombre}")
+                print(f"ya es la ultima dosis del medicamento {nombre} que empezo a tomar hace {dias} dias")
 
     # Crear y comenzar un nuevo hilo para la alarma
     hilo_alarma = threading.Thread(target=ejecutar_alarma, args=(nombre,horas,dosis,dias))
