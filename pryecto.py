@@ -11,14 +11,14 @@ def inicio():
         print("ingrese su contraseña")
         contraseña  = input("")
         if usuario == "admin" and contraseña == "admin":
-            print("inicio de seccion exitoso")
+            print("inicio de sesion exitoso")
             return
         else :
             print("usuario o contraseña incorrecta")
 
 def agregar_medicamento(nombre,horas,dosis,dias):
     funciones[nombre] = {"horas":horas,dosis:dosis,"dias":dias,"alarma_activa": True}
-    print("medicamento agregado correcta mente")
+    print("medicamento agregado correctamente")
 
     def ejecutar_alarma(nombre,horas,dosis,dias):
         if funciones[nombre]:
@@ -29,7 +29,17 @@ def agregar_medicamento(nombre,horas,dosis,dias):
             time.sleep(tiempo)
             if funciones [nombre]["alarma_activa"]:
                 print(f"Hora de tomar el medicamento {nombre}")
-                registrar_historial(nombre)
+                while True:
+                    res = input("¿medicamento tomado? ¿si? ¿no? ").lower()
+                    if res == "si":
+                        print("marcado como tomado")
+                        registrar_historial(nombre)
+                        break
+                    elif res == "no":
+                        print("el medicamento no se registrar en el historial")
+                        break
+                    else:
+                        print("opcion no valida")
             if contado == dosis:
                 print(f"ya es la ultima dosis del medicamento {nombre} que empezo a tomar hace {dias} dias")
 
@@ -67,9 +77,9 @@ while True :
     print("opcion 1: agregar medicamento")
     print("opcion 2: mostrar listado de medicamentos")
     print("opcion 3: eliminar medicamento")
-    print("opcion 4 mostrar historial de medicamentos tomado")
+    print("opcion 4 mostrar historial de medicamentos tomados")
     print("opcion 5: salir")
-    op = input("que opcion elije ")
+    op = input("¿que opcion desea elegir? ")
     if op == "1":
         nombre = input("ingrese el medicamento ")
         while True :
