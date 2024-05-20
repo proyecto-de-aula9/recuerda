@@ -25,21 +25,11 @@ def agregar_medicamento(nombre,horas,dosis,dias):
             dosis = dosis * dias
         for i in range (dosis):
             contado = i + 1
-            tiempo = horas * 3600
+            tiempo = horas 
             time.sleep(tiempo)
-            if funciones [nombre]["alarma_activa"]:
-                print(f"Hora de tomar el medicamento {nombre}")
-                while True:
-                    res = input("¿medicamento tomado? ¿si? ¿no? ").lower()
-                    if res == "si":
-                        print("marcado como tomado")
-                        registrar_historial(nombre)
-                        break
-                    elif res == "no":
-                        print("el medicamento no se registrar en el historial")
-                        break
-                    else:
-                        print("opcion no valida")
+            print(f"Hora de tomar el medicamento {nombre}")           
+            registrar_historial(nombre)
+                       
             if contado == dosis:
                 print(f"ya es la ultima dosis del medicamento {nombre} que empezo a tomar hace {dias} dias")
 
